@@ -63,7 +63,7 @@ def get_huggingface_token():
     return args.token
 #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
 accesstoken = get_huggingface_token()
-
+print(accesstoken)
 microsoft_model = False
 mistral_model = False
 # returns model, tokenizer
@@ -88,9 +88,9 @@ def load_model_and_tokenizer(device: str, lora: bool = True) -> tuple:
     # when use codestral on 80GB GPU, you may need to set the following in your env
     # PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_mb:128
     # reduce epochs to 2
-    #modelname = "microsoft/Phi-3-mini-128k-instruct"
-    modelname = "mistralai/Codestral-22B-v0.1"
-    #modelname = "mistralai/Mistral-7B-Instruct-v0.3"
+    # modelname = "microsoft/Phi-3-mini-128k-instruct"
+    # modelname = "mistralai/Codestral-22B-v0.1"
+    modelname = "mistralai/Mistral-7B-Instruct-v0.3"
     global microsoft_model
     global mistral_model
     microsoft_model = "microsoft" in modelname

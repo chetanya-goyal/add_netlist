@@ -1,0 +1,10 @@
+In Glayout strictsyntax, the command to create an n-type current mirror with two transistors and width and length as parameters would be:
+create a float parameter called width1
+create a float parameter called width2
+create a float parameter called length1
+create a float parameter called length2
+place a nmos called m1 with width=width1, length=length1, fingers=1, rmult=1, multipliers=1, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
+place a nmos called m2 with width=width2, length=length2, fingers=1, rmult=1, multipliers=1, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
+move m1 below m2
+route between m1_source_E and m2_source_E using smart_route
+route between m1_drain_W and m2_drain_W using smart_route

@@ -589,7 +589,7 @@ custom_drc_save_report $::env(DESIGN_NAME) $::env(REPORTS_DIR)/$::env(DESIGN_NAM
             spice_suffix = ".spice"
             if netlist is None:
                 raise ValueError("Path to cdl (netlist) must be provided!")
-            check_suffix = str(netlist).endswith(cdl_suffix) or str(netlist).endswith(spice_suffix)
+            check_suffix = str(netlist).endswith(cdl_suffix) or str(netlist).endswith(spice_suffix) or str(netlist).endswith(".sp")
             return check_suffix # True for cdl and spice, False if net passed
         
         def extract_design_name_from_netlist(file_path: str):
