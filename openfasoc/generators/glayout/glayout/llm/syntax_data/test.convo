@@ -1,0 +1,29 @@
+MimCapArray
+create a float parameter called size
+place a mimcap called m1 with size=size
+place a mimcap called m2 with size=size
+place a mimcap called m3 with size=size
+place a mimcap called m4 with size=size
+place a mimcap called m5 with size=size
+place a mimcap called m6 with size=size
+move m2 right of m1
+move m3 right of m2
+move m4 below m1
+move m5 right of m4
+move m6 right of m5
+move m5 below m1
+move m6 below m2
+route between m1_top_met_E and m2_top_met_W using straight_route with width=1
+route between m2_top_met_E and m3_top_met_W using straight_route with width=1
+route between m4_top_met_E and m5_top_met_W using straight_route with width=1
+route between m5_top_met_E and m6_top_met_W using straight_route with width=1
+route between m1_top_met_S and m4_top_met_N using straight_route with width=1
+route between m2_top_met_S and m5_top_met_N using straight_route with width=1
+route between m3_top_met_S and m6_top_met_N using straight_route with width=1
+route between m1_bottom_met_E and m2_bottom_met_W using straight_route with width=1
+route between m2_bottom_met_E and m3_bottom_met_W using straight_route with width=1
+route between m4_bottom_met_E and m5_bottom_met_W using straight_route with width=1
+route between m5_bottom_met_E and m6_bottom_met_W using straight_route with width=1
+route between m1_bottom_met_S and m4_bottom_met_N using straight_route with width=1
+route between m2_bottom_met_S and m5_bottom_met_N using straight_route with width=1
+route between m3_bottom_met_S and m6_bottom_met_N using straight_route with width=1

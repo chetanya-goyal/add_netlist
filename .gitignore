@@ -4,6 +4,7 @@
 env
 pre-commit-2.19.0
 
+
 *.vscode/
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -149,5 +150,5 @@ cython_debug/
 *Thumbs.db
 
 # Large Language Models
-glayout_llm_checkpoints/
+glayout_llm_checkpointsmstrl/
 
