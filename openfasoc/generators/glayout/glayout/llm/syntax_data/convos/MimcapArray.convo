@@ -1,10 +1,7 @@
 MimcapArray
-// no imports
-// create parameters
 create a float parameter called mimcap_size_x
 create a float parameter called mimcap_size_y
 # 2 rows by 3 cols
-// place 2*3=6 array components
 place a mimcap called element1 with size=(mimcap_size_x,mimcap_size_y)
 place a mimcap called element2 with size=(mimcap_size_x,mimcap_size_y)
 place a mimcap called element3 with size=(mimcap_size_x,mimcap_size_y)
@@ -12,7 +9,6 @@ place a mimcap called element4 with size=(mimcap_size_x,mimcap_size_y)
 place a mimcap called element5 with size=(mimcap_size_x,mimcap_size_y)
 place a mimcap called element6 with size=(mimcap_size_x,mimcap_size_y)
 # first row
-// move array components
 move element2 to the right of element1
 move element3 to the right of element2
 # second row
@@ -21,7 +17,6 @@ move element5 above element1
 move element6 above element1
 move element5 to the right of element4
 move element6 to the right of element5
-// route array components
 # route top met
 route between element1_top_met_E and element2_top_met_W using smart_route
 route between element2_top_met_E and element3_top_met_W using smart_route

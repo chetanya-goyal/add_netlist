@@ -21,8 +21,8 @@ def common_centroid_ab_ba(
 	length: Optional[float] = None,
 	n_or_p_fet: bool = True,
 	rmult: int = 1,
-	dummy: Union[bool, tuple[bool, bool]] = True,
-	substrate_tap: bool=True
+	with_dummy: Union[bool, tuple[bool, bool]] = True,
+	with_substrate_tap: bool=True
 ) -> Component:
     """create a comcentroid with 2 transistors placed in two rows with common centroid place. Sources are shorted
     width = width of the transistors
@@ -37,15 +37,15 @@ def common_centroid_ab_ba(
     comcentroid = Component()
     # create transistors
     well = None
-    if isinstance(dummy, bool):
-        dummy = (dummy, dummy)
+    if isinstance(with_dummy, bool):
+        with_dummy = (with_dummy, with_dummy)
     if n_or_p_fet:
-        fetL = nmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(dummy[0], False),with_dnwell=False,with_substrate_tap=False,rmult=rmult)
-        fetR = nmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(False,dummy[1]),with_dnwell=False,with_substrate_tap=False,rmult=rmult)
+        fetL = nmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(with_dummy[0], False),with_dnwell=False,with_substrate_tap=False,rmult=rmult)
+        fetR = nmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(False,with_dummy[1]),with_dnwell=False,with_substrate_tap=False,rmult=rmult)
         well, sdglayer = "pwell", "n+s/d"
     else:
-        fetL = pmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(dummy[0], False),dnwell=False,with_substrate_tap=False,rmult=rmult)
-        fetR = pmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(False,dummy[1]),dnwell=False,with_substrate_tap=False,rmult=rmult)
+        fetL = pmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(with_dummy[0], False),dnwell=False,with_substrate_tap=False,rmult=rmult)
+        fetR = pmos(pdk, width=width, fingers=fingers,length=length,multipliers=1,with_tie=False,with_dummy=(False,with_dummy[1]),dnwell=False,with_substrate_tap=False,rmult=rmult)
         well, sdglayer = "nwell", "p+s/d"
     fetRdims = evaluate_bbox(fetR.flatten().remove_layers(layers=[pdk.get_glayer(well)]))
     fetLdims = evaluate_bbox(fetL.flatten().remove_layers(layers=[pdk.get_glayer(well)]))
@@ -78,7 +78,7 @@ def common_centroid_ab_ba(
     b_botl.movex(0-fetLdims[0]/2-min_spacing_x/2).movey(pdk.snap_to_2xgrid(-fetLdims[1]/2-min_spacing_y/2))
     comcentroid.add_padding(default=0,layers=[pdk.get_glayer(well)])
     # if substrate tap place substrate tap, and route dummy to substrate tap
-    if substrate_tap:
+    if with_substrate_tap:
         tapref = comcentroid << tapring(pdk,evaluate_bbox(comcentroid,padding=1))#,horizontal_glayer="met1")
         comcentroid.add_ports(tapref.get_ports_list(),prefix="tap_")
         try:

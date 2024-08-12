@@ -1,16 +1,9 @@
 NMOSArray
-// This is an array component
-// it is made up of an array of elements (numbered from bottom left to top right)
-// number of rows and columns: 4 rows by 3 columns
-//
 # 4 rows by 3 cols array of nmos transistors (no routing)
-// no imports
-// create parameters
 create a float parameter called width
 create a float parameter called length
 create a int parameter called multipliers
 create a int parameter called fingers
-// place 4*3=12 array components
 place a nmos called element1 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
 place a nmos called element2 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
 place a nmos called element3 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
@@ -25,7 +18,6 @@ place a nmos called element11 with width=width, length=length, fingers=fingers, 
 place a nmos called element12 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
 # this trains the LLM to array from bottom left to top right
 # first row
-// move array components
 move element2 to the right of element1
 move element3 to the right of element2
 # second row
@@ -46,4 +38,3 @@ move element11 above element7
 move element12 above element7
 move element11 to the right of element10
 move element12 to the right of element11
-// no routing

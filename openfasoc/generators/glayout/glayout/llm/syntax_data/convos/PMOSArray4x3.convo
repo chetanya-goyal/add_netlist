@@ -1,16 +1,9 @@
 PMOSArray
-// This is an array component
-// it is made up of an array of elements (numbered from bottom left to top right)
-// number of rows and columns: 4 rows by 3 columns
-//
 # 4 rows by 3 cols array of nmos transistors (no routing)
-// no imports
-// create parameters
 create a float parameter called width
 create a float parameter called length
 create a int parameter called multipliers
 create a int parameter called fingers
-// place 4*3=12 array components
 place a pmos called element1 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
 place a pmos called element2 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
 place a pmos called element3 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
@@ -23,7 +16,6 @@ place a pmos called element9 with width=width, length=length, fingers=fingers, r
 place a pmos called element10 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
 place a pmos called element11 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
 place a pmos called element12 with width=width, length=length, fingers=fingers, rmult=1, multipliers=multipliers, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
-// move array components
 # this trains the LLM to array from bottom left to top right
 # first row
 move element2 to the right of element1
@@ -46,4 +38,3 @@ move element11 above element7
 move element12 above element7
 move element11 to the right of element10
 move element12 to the right of element11
-// no routing

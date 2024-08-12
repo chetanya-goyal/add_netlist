@@ -1,29 +1,54 @@
-MimCapArray
-create a float parameter called size
-place a mimcap called m1 with size=size
-place a mimcap called m2 with size=size
-place a mimcap called m3 with size=size
-place a mimcap called m4 with size=size
-place a mimcap called m5 with size=size
-place a mimcap called m6 with size=size
-move m2 right of m1
-move m3 right of m2
-move m4 below m1
-move m5 right of m4
-move m6 right of m5
-move m5 below m1
-move m6 below m2
-route between m1_top_met_E and m2_top_met_W using straight_route with width=1
-route between m2_top_met_E and m3_top_met_W using straight_route with width=1
-route between m4_top_met_E and m5_top_met_W using straight_route with width=1
-route between m5_top_met_E and m6_top_met_W using straight_route with width=1
-route between m1_top_met_S and m4_top_met_N using straight_route with width=1
-route between m2_top_met_S and m5_top_met_N using straight_route with width=1
-route between m3_top_met_S and m6_top_met_N using straight_route with width=1
-route between m1_bottom_met_E and m2_bottom_met_W using straight_route with width=1
-route between m2_bottom_met_E and m3_bottom_met_W using straight_route with width=1
-route between m4_bottom_met_E and m5_bottom_met_W using straight_route with width=1
-route between m5_bottom_met_E and m6_bottom_met_W using straight_route with width=1
-route between m1_bottom_met_S and m4_bottom_met_N using straight_route with width=1
-route between m2_bottom_met_S and m5_bottom_met_N using straight_route with width=1
-route between m3_bottom_met_S and m6_bottom_met_N using straight_route with width=1
+InterdigitatedNMOS
+create a int parameter called top_numcols
+create a int parameter called bottom_numcols
+create a float parameter called top_width
+create a float parameter called bottom_width
+create a float parameter called top_length
+create a float parameter called bottom_length
+create a int parameter called top_multiplier
+create a int parameter called bottom_multiplier
+create a int parameter called top_fingers
+create a int parameter called bottom_fingers
+create a float parameter called n_ref_width
+create a float parameter called n_mirr_width
+create a float parameter called n_ref_length
+create a float parameter called n_mirr_length
+create a int parameter called n_ref_multiplier
+create a int parameter called n_mirr_multiplier
+create a int parameter called n_ref_fingers
+create a int parameter called n_mirr_fingers
+create a float parameter called p_ref_width
+create a float parameter called p_mirr_width
+create a float parameter called p_ref_length
+create a float parameter called p_mirr_length
+create a int parameter called p_ref_multiplier
+create a int parameter called p_mirr_multiplier
+create a int parameter called p_ref_fingers
+create a int parameter called p_mirr_fingers
+place an interdigitated pmos called top with numcols=top_numcols, with_substrate_tap=False, with_tie=True, dummy=True
+place an interdigitated nmos called bottom with numcols=bottom_numcols,with_substrate_tap=False, with_tie=True, dummy=True
+place a nmos called n_ref with width=n_ref_width, length=n_ref_length, fingers=n_ref_fingers, rmult=1, multipliers=n_ref_multiplier, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
+place a nmos called n_mirr with width=n_mirr_width, length=n_mirr_length, fingers=n_mirr_fingers, rmult=1, multipliers=n_mirr_multiplier, with_substrate_tap=False, with_tie=True, with_dummy=True, with_dnwell=False
+place a pmos called p_ref with width=p_ref_width, length=p_ref_length, fingers=p_ref_fingers, rmult=1, multipliers=p_ref_multiplier, with_substrate_tap=False, with_tie=True, with_dummy=True, dnwell=False
+place a pmos called p_mirr with width=p_mirr_width, length=p_mirr_length, fingers=p_mirr_fingers, rmult=1, multipliers=p_mirr_multiplier, with_substrate_tap=False, with_tie=True, with_dummy=True, dnwell=False
+move bottom to the left of top
+move n_ref below bottom
+move n_mirr below bottom
+move n_ref to the left of n_mirr
+move p_ref above top
+move p_mirr above top
+move p_ref to the left of p_mirr
+route between top_A_source_W and bottom_A_source_W using c_route
+route between top_A_gate_W and bottom_A_gate_W using c_route
+route between top_B_source_E and bottom_B_source_E using c_route
+route between top_B_gate_E and bottom_B_gate_E using c_route
+# had to manually change to c_route (smart_route buggy)
+route between n_ref_gate_W and n_mirr_gate_W using straight_route
+route between n_ref_source_W and n_mirr_source_W using straight_route
+route between p_ref_gate_W and p_mirr_gate_W using straight_route
+route between p_ref_source_W and p_mirr_source_W using straight_route
+route between p_ref_drain_W and top_A_source_W using c_route
+route between p_mirr_gate_W and top_B_drain_W using c_route
+route between n_ref_drain_W and bottom_A_source_W using c_route
+route between n_mirr_gate_W and bottom_B_drain_W using c_route
+route between n_mirr_drain_W and p_mirr_drain_W using c_route
